@@ -28,7 +28,7 @@ POOL_SOURCE_COIN_MINERS_NAME = "Coin-Miners"
 POOL_SOURCE_CK_POOL_KEY = "ck_pool"
 POOL_SOURCE_CK_POOL_NAME = "solo.ckpool.org"
 POOL_SOURCE_MINING_DUTCH_KEY = "mining_dutch"
-POOL_SOURCE_MINING_DUTCH_NAME = "minking-dutch.nl"
+POOL_SOURCE_MINING_DUTCH_NAME = "mining-dutch.nl"
 
 WALLET_ADDRESS = "Wallet Address"
 WORKER = "Worker"
