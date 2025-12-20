@@ -68,7 +68,7 @@ class MiningDutchPoolClient(PoolClient):
                             worker_name,
                             max_difficulty,
                             HashRate(hashrate, HashRateUnit.MH)
-                            .to_unit(HashRateUnit.TH)
+                            .to_unit(HashRateUnit.GH)
                             .value,
                             is_online,
                         )

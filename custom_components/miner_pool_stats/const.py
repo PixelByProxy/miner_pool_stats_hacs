@@ -42,7 +42,7 @@ KEY_START_TIME = "start_time"
 KEY_LAST_SEEN = "last_seen"
 
 UNIT_WORKER_COUNT = "workers"
-UNIT_HASH_RATE = "TH/s"
+UNIT_HASH_RATE = "GH/s"
 UNIT_DIFFICULTY = "difficulty"
 
 

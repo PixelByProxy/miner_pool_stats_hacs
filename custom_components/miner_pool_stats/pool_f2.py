@@ -87,7 +87,7 @@ class F2PoolClient(PoolClient):
                             best_difficulty=None,
                             hash_rate=(
                                 HashRate.from_number(float(worker_arr[1]))
-                                .to_unit(HashRateUnit.TH)
+                                .to_unit(HashRateUnit.GH)
                                 .value
                             ),
                             is_online=is_online,

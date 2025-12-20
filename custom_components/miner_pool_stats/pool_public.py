@@ -84,7 +84,7 @@ class PublicPoolClient(PoolClient):
                             hash_rate_float = workers[worker.name].hash_rate or 0.0
                             workers[worker.name].hash_rate = (
                                 HashRate.from_number(hash_rate_float)
-                                .to_unit(HashRateUnit.TH)
+                                .to_unit(HashRateUnit.GH)
                                 .value
                             )
 

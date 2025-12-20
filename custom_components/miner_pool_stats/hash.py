@@ -167,9 +167,9 @@ class HashRate:
             # Convert to a smaller unit
             conversion_factor = 1
             for hru in reversed(HashRateUnit):
-                if hru.value >= unit.value:
+                if hru.value >= self.unit.value:
                     continue
-                if hru.value < self.unit.value:
+                if hru.value < unit.value:
                     break
                 conversion_factor *= 1000
 

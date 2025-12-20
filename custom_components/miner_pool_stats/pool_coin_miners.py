@@ -53,7 +53,7 @@ class CoinMinersPoolClient(PoolClient):
             if workers[worker.name].hash_rate is not None:
                 hash_rate_float = workers[worker.name].hash_rate or 0.0
                 workers[worker.name].hash_rate = (
-                    HashRate.from_number(hash_rate_float).to_unit(HashRateUnit.TH).value
+                    HashRate.from_number(hash_rate_float).to_unit(HashRateUnit.GH).value
                 )
 
         # if there are no workers, log a warning

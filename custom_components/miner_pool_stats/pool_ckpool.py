@@ -55,7 +55,7 @@ class CKPoolClient(PoolClient):
                             float(worker_data["bestever"]),
                             (
                                 HashRate.from_string(worker_data["hashrate5m"])
-                                .to_unit(HashRateUnit.TH)
+                                .to_unit(HashRateUnit.GH)
                                 .value
                             ),
                             is_online,

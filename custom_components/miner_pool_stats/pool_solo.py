@@ -43,7 +43,7 @@ class SoloPoolClient(PoolClient):
                                 HashRate.from_number(
                                     float(json["workers"][worker_name]["hr"])
                                 )
-                                .to_unit(HashRateUnit.TH)
+                                .to_unit(HashRateUnit.GH)
                                 .value
                             ),
                             is_online=not bool(json["workers"][worker_name]["offline"]),
