@@ -34,6 +34,9 @@ from .const import (
     POOL_SOURCE_F2_POOL_COINS,
     POOL_SOURCE_F2_POOL_KEY,
     POOL_SOURCE_F2_POOL_NAME,
+    POOL_SOURCE_MINING_CORE_KEY,
+    POOL_SOURCE_MINING_CORE_NAME,
+    POOL_SOURCE_MINING_CORE_POOL_COINS,
     POOL_SOURCE_MINING_DUTCH_KEY,
     POOL_SOURCE_MINING_DUTCH_NAME,
     POOL_SOURCE_MINING_DUTCH_POOL_COINS,
@@ -77,6 +80,10 @@ STEP_POOL_SOURCE_SCHEMA = vol.Schema(
                     SelectOptionDict(
                         value=POOL_SOURCE_MINING_DUTCH_KEY,
                         label=POOL_SOURCE_MINING_DUTCH_NAME,
+                    ),
+                    SelectOptionDict(
+                        value=POOL_SOURCE_MINING_CORE_KEY,
+                        label=POOL_SOURCE_MINING_CORE_NAME,
                     ),
                 ],
                 mode=SelectSelectorMode.DROPDOWN,
@@ -182,6 +189,10 @@ class PoolConfigFlow(ConfigFlow, domain=DOMAIN):
         if user_input[CONF_POOL_KEY] == POOL_SOURCE_MINING_DUTCH_KEY:
             self._data[CONF_POOL_NAME] = POOL_SOURCE_MINING_DUTCH_NAME
             return await self.async_step_mining_dutch_pool(user_input)
+
+        if user_input[CONF_POOL_KEY] == POOL_SOURCE_MINING_CORE_KEY:
+            self._data[CONF_POOL_NAME] = POOL_SOURCE_MINING_CORE_NAME
+            return await self.async_step_mining_core_pool(user_input)
 
         errors["base"] = "Invalid pool source"
 
@@ -337,6 +348,45 @@ class PoolConfigFlow(ConfigFlow, domain=DOMAIN):
             )
 
         return result
+
+    async def async_step_mining_core_pool(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
+        """Handle the mining core pool step."""
+        errors: dict[str, str] = {}
+
+        coins: list[SelectOptionDict] = [
+            SelectOptionDict(value=coin.value, label=coin.name)
+            for coin in POOL_SOURCE_MINING_CORE_POOL_COINS
+        ]
+
+        coin_schema = vol.Schema(
+            {
+                vol.Required(CONF_POOL_URL, default="http://umbrel.local:4000"): str,
+                vol.Required(CONF_COIN_KEY): SelectSelector(
+                    SelectSelectorConfig(
+                        options=coins,
+                        mode=SelectSelectorMode.DROPDOWN,
+                    )
+                ),
+            }
+        )
+
+        # if the user input CONF_COIN_KEY or CONF_POOL_URL is None, show the form
+        if (
+            user_input is None
+            or user_input.get(CONF_COIN_KEY) is None
+            or user_input.get(CONF_POOL_URL) is None
+        ):
+            return self.async_show_form(
+                step_id="mining_core_pool",
+                data_schema=coin_schema,
+                errors=errors,
+            )
+
+        self._data.update(user_input)
+
+        return await self.async_step_wallet(user_input)
 
     async def async_step_wallet(
         self, user_input: dict[str, Any] | None = None

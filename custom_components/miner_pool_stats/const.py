@@ -24,11 +24,13 @@ POOL_SOURCE_F2_POOL_NAME = "f2pool"
 POOL_SOURCE_SOLO_POOL_KEY = "solo_pool"
 POOL_SOURCE_SOLO_POOL_NAME = "SoloPool.org"
 POOL_SOURCE_COIN_MINERS_KEY = "coin_miners"
-POOL_SOURCE_COIN_MINERS_NAME = "Coin-Miners"
+POOL_SOURCE_COIN_MINERS_NAME = "Coin-Miners.info"
 POOL_SOURCE_CK_POOL_KEY = "ck_pool"
-POOL_SOURCE_CK_POOL_NAME = "solo.ckpool.org"
+POOL_SOURCE_CK_POOL_NAME = "CKPool"
 POOL_SOURCE_MINING_DUTCH_KEY = "mining_dutch"
-POOL_SOURCE_MINING_DUTCH_NAME = "mining-dutch.nl"
+POOL_SOURCE_MINING_DUTCH_NAME = "Mining Dutch"
+POOL_SOURCE_MINING_CORE_KEY = "mining_core"
+POOL_SOURCE_MINING_CORE_NAME = "Mining Core"
 
 WALLET_ADDRESS = "Wallet Address"
 WORKER = "Worker"
@@ -58,6 +60,7 @@ class CryptoCoin(StrEnum):
     CKB = "ckb"
     CLORE = "clore"
     DASH = "dash"
+    DOGE = "doge"
     ELA = "ela"
     EHHW = "ehhw"
     FB = "fb"
@@ -138,4 +141,9 @@ POOL_SOURCE_MINING_DUTCH_POOL_COINS = [
     CryptoCoin.BTC,
     CryptoCoin.BCH,
     CryptoCoin.LTC,
+]
+
+POOL_SOURCE_MINING_CORE_POOL_COINS = [
+    CryptoCoin.BCH,
+    CryptoCoin.DOGE,
 ]
